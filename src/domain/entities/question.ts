@@ -2,6 +2,7 @@ import { Slug } from "./value-objects/slug";
 
 import { Entity } from "../../core/entities/entity";
 import { UniqueEntityID } from "../../core/entities/value-objects/unique-entity-id";
+import { Optional } from "../../core/types/optional";
 
 type QuestionProps = {
   authorId: UniqueEntityID;
@@ -13,4 +14,19 @@ type QuestionProps = {
   updatedAt?: Date;
 };
 
-export class Question extends Entity<QuestionProps> {}
+export class Question extends Entity<QuestionProps> {
+  static create(
+    props: Optional<QuestionProps, "createdAt">,
+    id?: UniqueEntityID
+  ) {
+    const question = new Question(
+      {
+        ...props,
+        createdAt: new Date(),
+      },
+      id
+    );
+
+    return question;
+  }
+}
