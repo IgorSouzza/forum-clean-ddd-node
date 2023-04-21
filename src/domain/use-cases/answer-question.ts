@@ -1,13 +1,13 @@
-import { Answer } from "@/domain/entities/answer";
-import { AnswersRepository } from "@/domain/repositories/answers-repository";
+import { Answer } from '@/domain/entities/answer'
+import { AnswersRepository } from '@/domain/repositories/answers-repository'
 
-import { UniqueEntityID } from "@/core/entities/value-objects/unique-entity-id";
+import { UniqueEntityID } from '@/core/entities/value-objects/unique-entity-id'
 
 type AnswerQuestionUseCaseRequest = {
-  instructorId: string;
-  questionId: string;
-  content: string;
-};
+  instructorId: string
+  questionId: string
+  content: string
+}
 
 export class AnswerQuestionUseCase {
   constructor(private readonly answersRepository: AnswersRepository) {}
@@ -21,10 +21,10 @@ export class AnswerQuestionUseCase {
       content,
       authorId: new UniqueEntityID(instructorId),
       questionId: new UniqueEntityID(questionId),
-    });
+    })
 
-    await this.answersRepository.create(answer);
+    await this.answersRepository.create(answer)
 
-    return answer;
+    return answer
   }
 }
