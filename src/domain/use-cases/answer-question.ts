@@ -1,7 +1,7 @@
-import { Answer } from "../entities/answer";
-import { AnswersRepository } from "../repositories/answers-repository";
+import { Answer } from "@/domain/entities/answer";
+import { AnswersRepository } from "@/domain/repositories/answers-repository";
 
-import { UniqueEntityID } from "../../core/entities/value-objects/unique-entity-id";
+import { UniqueEntityID } from "@/core/entities/value-objects/unique-entity-id";
 
 type AnswerQuestionUseCaseRequest = {
   instructorId: string;
