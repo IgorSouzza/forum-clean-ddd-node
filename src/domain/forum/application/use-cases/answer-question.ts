@@ -1,5 +1,5 @@
-import { Answer } from '@/domain/entities/answer'
-import { AnswersRepository } from '@/domain/repositories/answers-repository'
+import { Answer } from '@/domain/forum/enterprise/entities/answer'
+import { AnswersRepository } from '@/domain/forum/application/repositories/answers-repository'
 
 import { UniqueEntityID } from '@/core/entities/value-objects/unique-entity-id'
 
