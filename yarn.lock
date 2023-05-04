@@ -969,6 +969,11 @@ eslint-plugin-react@^7.30.0:
     semver "^6.3.0"
     string.prototype.matchall "^4.0.8"
 
+eslint-plugin-vitest-globals@1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-vitest-globals/-/eslint-plugin-vitest-globals-1.3.1.tgz#05d13739e8554e6739b43900da5e6c673de88e34"
+  integrity sha512-ELBqLfu/ZAwVHE1uEvj+Z06o4WnaD+5IcwW/OHQ5qVPA7i7mZexnUBj+04BF60rY7pb3ljRgJRsK+rCTmSS/5g==
+
 eslint-scope@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-5.1.1.tgz#e786e59a66cb92b3f6c1fb0d508aab174848f48c"
