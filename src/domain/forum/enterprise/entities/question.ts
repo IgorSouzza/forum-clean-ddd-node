@@ -6,7 +6,7 @@ import { Entity } from '@/core/entities/entity'
 import { UniqueEntityID } from '@/core/entities/value-objects/unique-entity-id'
 import { Optional } from '@/core/types/optional'
 
-type QuestionProps = {
+export type QuestionProps = {
   authorId: UniqueEntityID
   bestAnswerId?: UniqueEntityID
   title: string
