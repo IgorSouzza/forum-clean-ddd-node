@@ -37,7 +37,9 @@ describe('Fetch Recents Questions', () => {
       await questionsRepository.create(makeQuestion())
     }
 
-    const { questions } = await sut.execute({ page: 2 })
+    const { questions } = await sut.execute({
+      page: 2,
+    })
 
     expect(questions).toHaveLength(2)
   })
