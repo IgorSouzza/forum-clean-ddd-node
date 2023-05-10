@@ -1,10 +1,10 @@
 import { ChooseQuestionBestAnswerUseCase } from '@/domain/forum/application/use-cases/choose-question-best-answer'
+import { UniqueEntityID } from '@/core/entities/value-objects/unique-entity-id'
 
 import { makeQuestion } from 'tests/factories/make-question'
 import { makeAnswer } from 'tests/factories/make-answer'
-import { InMemoryAnswersRepository } from '../repositories/in-memory-answers-repository'
-import { InMemoryQuestionsRepository } from '../repositories/in-memory-questions-repository'
-import { UniqueEntityID } from '@/core/entities/value-objects/unique-entity-id'
+import { InMemoryAnswersRepository } from 'tests/repositories/in-memory-answers-repository'
+import { InMemoryQuestionsRepository } from 'tests/repositories/in-memory-questions-repository'
 
 let questionsRepository: InMemoryQuestionsRepository
 let answersRepository: InMemoryAnswersRepository

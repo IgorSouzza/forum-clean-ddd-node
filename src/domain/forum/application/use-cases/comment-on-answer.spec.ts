@@ -1,8 +1,8 @@
 import { CommentOnAnswerUseCase } from '@/domain/forum/application/use-cases/comment-on-answer'
 
 import { makeAnswer } from 'tests/factories/make-answer'
-import { InMemoryAnswersRepository } from '../repositories/in-memory-answers-repository'
-import { InMemoryAnswerCommentRepository } from '../repositories/in-memory-answer-comments-repository'
+import { InMemoryAnswersRepository } from 'tests/repositories/in-memory-answers-repository'
+import { InMemoryAnswerCommentRepository } from 'tests/repositories/in-memory-answer-comments-repository'
 
 let answersRepository: InMemoryAnswersRepository
 let answerCommentRepository: InMemoryAnswerCommentRepository

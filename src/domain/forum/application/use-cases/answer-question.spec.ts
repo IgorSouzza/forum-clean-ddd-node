@@ -1,6 +1,6 @@
 import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answer-question'
 
-import { InMemoryAnswersRepository } from '../repositories/in-memory-answers-repository'
+import { InMemoryAnswersRepository } from 'tests/repositories/in-memory-answers-repository'
 
 let answersRepository: InMemoryAnswersRepository
 let sut: AnswerQuestionUseCase

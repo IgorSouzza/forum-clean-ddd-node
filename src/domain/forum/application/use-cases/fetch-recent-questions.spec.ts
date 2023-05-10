@@ -1,7 +1,7 @@
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/fetch-recent-questions'
 
 import { makeQuestion } from 'tests/factories/make-question'
-import { InMemoryQuestionsRepository } from '../repositories/in-memory-questions-repository'
+import { InMemoryQuestionsRepository } from 'tests/repositories/in-memory-questions-repository'
 
 let questionsRepository: InMemoryQuestionsRepository
 let sut: FetchRecentQuestionsUseCase

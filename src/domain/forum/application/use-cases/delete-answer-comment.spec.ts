@@ -2,7 +2,7 @@ import { UniqueEntityID } from '@/core/entities/value-objects/unique-entity-id'
 import { DeleteAnswerCommentUseCase } from '@/domain/forum/application/use-cases/delete-answer-comment'
 
 import { makeAnswerComment } from 'tests/factories/make-answer-comment'
-import { InMemoryAnswerCommentRepository } from '../repositories/in-memory-answer-comments-repository'
+import { InMemoryAnswerCommentRepository } from 'tests/repositories/in-memory-answer-comments-repository'
 
 let answerCommentRepository: InMemoryAnswerCommentRepository
 let sut: DeleteAnswerCommentUseCase

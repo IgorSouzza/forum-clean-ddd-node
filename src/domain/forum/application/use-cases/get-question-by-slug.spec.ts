@@ -4,7 +4,7 @@ import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/g
 import { UniqueEntityID } from '@/core/entities/value-objects/unique-entity-id'
 
 import { makeQuestion } from 'tests/factories/make-question'
-import { InMemoryQuestionsRepository } from '../repositories/in-memory-questions-repository'
+import { InMemoryQuestionsRepository } from 'tests/repositories/in-memory-questions-repository'
 
 let questionsRepository: InMemoryQuestionsRepository
 let sut: GetQuestionBySlugUseCase

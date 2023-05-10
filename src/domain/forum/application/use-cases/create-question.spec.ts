@@ -1,7 +1,7 @@
 import { UniqueEntityID } from '@/core/entities/value-objects/unique-entity-id'
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/create-question'
 
-import { InMemoryQuestionsRepository } from '../repositories/in-memory-questions-repository'
+import { InMemoryQuestionsRepository } from 'tests/repositories/in-memory-questions-repository'
 
 let questionsRepository: InMemoryQuestionsRepository
 let sut: CreateQuestionUseCase
