@@ -2,19 +2,19 @@ import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/c
 
 import { makeQuestion } from 'tests/factories/make-question'
 import { InMemoryQuestionsRepository } from 'tests/repositories/in-memory-questions-repository'
-import { InMemoryQuestionCommentRepository } from 'tests/repositories/in-memory-question-comments-repository'
+import { InMemoryQuestionCommentsRepository } from 'tests/repositories/in-memory-question-comments-repository'
 
 let questionsRepository: InMemoryQuestionsRepository
-let questionCommentRepository: InMemoryQuestionCommentRepository
+let questionCommentsRepository: InMemoryQuestionCommentsRepository
 let sut: CommentOnQuestionUseCase
 
 describe('Comment on Question', () => {
   beforeEach(() => {
     questionsRepository = new InMemoryQuestionsRepository()
-    questionCommentRepository = new InMemoryQuestionCommentRepository()
+    questionCommentsRepository = new InMemoryQuestionCommentsRepository()
     sut = new CommentOnQuestionUseCase(
       questionsRepository,
-      questionCommentRepository,
+      questionCommentsRepository,
     )
   })
 
@@ -29,6 +29,6 @@ describe('Comment on Question', () => {
       content: 'Test comment',
     })
 
-    expect(questionCommentRepository.items[0].content).toEqual('Test comment')
+    expect(questionCommentsRepository.items[0].content).toEqual('Test comment')
   })
 })

@@ -2,28 +2,28 @@ import { UniqueEntityID } from '@/core/entities/value-objects/unique-entity-id'
 import { DeleteQuestionCommentUseCase } from '@/domain/forum/application/use-cases/delete-question-comment'
 
 import { makeQuestionComment } from 'tests/factories/make-question-comment'
-import { InMemoryQuestionCommentRepository } from 'tests/repositories/in-memory-question-comments-repository'
+import { InMemoryQuestionCommentsRepository } from 'tests/repositories/in-memory-question-comments-repository'
 
-let questionCommentRepository: InMemoryQuestionCommentRepository
+let questionCommentsRepository: InMemoryQuestionCommentsRepository
 let sut: DeleteQuestionCommentUseCase
 
 describe('Delete Question Comment', () => {
   beforeEach(() => {
-    questionCommentRepository = new InMemoryQuestionCommentRepository()
-    sut = new DeleteQuestionCommentUseCase(questionCommentRepository)
+    questionCommentsRepository = new InMemoryQuestionCommentsRepository()
+    sut = new DeleteQuestionCommentUseCase(questionCommentsRepository)
   })
 
   it('should be able to delete a question comment', async () => {
     const questionComment = makeQuestionComment()
 
-    await questionCommentRepository.create(questionComment)
+    await questionCommentsRepository.create(questionComment)
 
     await sut.execute({
       authorId: questionComment.authorId.toString(),
       questionCommentId: questionComment.id.toString(),
     })
 
-    expect(questionCommentRepository.items).toHaveLength(0)
+    expect(questionCommentsRepository.items).toHaveLength(0)
   })
 
   it('should not be able to delete another user question comment', async () => {
@@ -31,7 +31,7 @@ describe('Delete Question Comment', () => {
       authorId: new UniqueEntityID('author-1'),
     })
 
-    await questionCommentRepository.create(questionComment)
+    await questionCommentsRepository.create(questionComment)
 
     await expect(() => {
       return sut.execute({
@@ -40,6 +40,6 @@ describe('Delete Question Comment', () => {
       })
     }).rejects.toBeInstanceOf(Error)
 
-    expect(questionCommentRepository.items).toHaveLength(1)
+    expect(questionCommentsRepository.items).toHaveLength(1)
   })
 })
