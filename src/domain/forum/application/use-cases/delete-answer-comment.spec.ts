@@ -2,14 +2,14 @@ import { UniqueEntityID } from '@/core/entities/value-objects/unique-entity-id'
 import { DeleteAnswerCommentUseCase } from '@/domain/forum/application/use-cases/delete-answer-comment'
 
 import { makeAnswerComment } from 'tests/factories/make-answer-comment'
-import { InMemoryAnswerCommentRepository } from 'tests/repositories/in-memory-answer-comments-repository'
+import { InMemoryAnswerCommentsRepository } from 'tests/repositories/in-memory-answer-comments-repository'
 
-let answerCommentRepository: InMemoryAnswerCommentRepository
+let answerCommentRepository: InMemoryAnswerCommentsRepository
 let sut: DeleteAnswerCommentUseCase
 
 describe('Delete Answer Comment', () => {
   beforeEach(() => {
-    answerCommentRepository = new InMemoryAnswerCommentRepository()
+    answerCommentRepository = new InMemoryAnswerCommentsRepository()
     sut = new DeleteAnswerCommentUseCase(answerCommentRepository)
   })
 
