@@ -20,13 +20,15 @@ describe('Get Question By Slug', () => {
       slug: Slug.create('example-question'),
     })
 
-    questionsRepository.create(newQuestion)
+    await questionsRepository.create(newQuestion)
 
-    const { question } = await sut.execute({
+    const result = await sut.execute({
       slug: 'example-question',
     })
 
-    expect(question.id).toEqual(expect.any(UniqueEntityID))
-    expect(question.title).toEqual(newQuestion.title)
+    if (result.isLeft()) return
+
+    expect(result.value?.question.id).toEqual(expect.any(UniqueEntityID))
+    expect(result.value?.question.title).toEqual(newQuestion.title)
   })
 })

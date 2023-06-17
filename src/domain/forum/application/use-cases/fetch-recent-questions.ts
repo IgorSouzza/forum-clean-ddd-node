@@ -1,3 +1,5 @@
+import { Either, right } from '@/core/either'
+
 import { Question } from '@/domain/forum/enterprise/entities/question'
 import { QuestionsRepository } from '@/domain/forum/application/repositories/questions-repository'
 
@@ -5,9 +7,12 @@ type FetchRecentQuestionsUseCaseRequest = {
   page: number
 }
 
-type FetchRecentQuestionsUseCaseResponse = {
-  questions: Question[]
-}
+type FetchRecentQuestionsUseCaseResponse = Either<
+  null,
+  {
+    questions: Question[]
+  }
+>
 
 export class FetchRecentQuestionsUseCase {
   constructor(private readonly questionsRepository: QuestionsRepository) {}
@@ -17,8 +22,8 @@ export class FetchRecentQuestionsUseCase {
   }: FetchRecentQuestionsUseCaseRequest): Promise<FetchRecentQuestionsUseCaseResponse> {
     const questions = await this.questionsRepository.findManyRecent({ page })
 
-    return {
+    return right({
       questions,
-    }
+    })
   }
 }

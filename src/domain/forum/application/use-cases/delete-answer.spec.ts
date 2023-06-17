@@ -1,5 +1,6 @@
 import { UniqueEntityID } from '@/core/entities/value-objects/unique-entity-id'
 import { DeleteAnswerUseCase } from '@/domain/forum/application/use-cases/delete-answer'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 import { makeAnswer } from 'tests/factories/make-answer'
 import { InMemoryAnswersRepository } from 'tests/repositories/in-memory-answers-repository'
@@ -41,13 +42,13 @@ describe('Delete Answer', () => {
 
     await answersRepository.create(newAnswer)
 
-    await expect(() => {
-      return sut.execute({
-        answerId: 'answer-1',
-        authorId: 'author-2',
-      })
-    }).rejects.toBeInstanceOf(Error)
+    const result = await sut.execute({
+      answerId: 'answer-1',
+      authorId: 'author-2',
+    })
 
+    expect(result.isLeft())
+    expect(result.value).toBeInstanceOf(ResourceNotFoundError)
     expect(answersRepository.items).toHaveLength(1)
   })
 })
