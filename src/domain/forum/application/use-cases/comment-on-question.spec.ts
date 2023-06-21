@@ -3,14 +3,19 @@ import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/c
 import { makeQuestion } from 'tests/factories/make-question'
 import { InMemoryQuestionsRepository } from 'tests/repositories/in-memory-questions-repository'
 import { InMemoryQuestionCommentsRepository } from 'tests/repositories/in-memory-question-comments-repository'
+import { InMemoryQuestionAttachmentsRepository } from 'tests/repositories/in-memory-question-attachments-repository'
 
 let questionsRepository: InMemoryQuestionsRepository
+let questionAttachmentsRepository: InMemoryQuestionAttachmentsRepository
 let questionCommentsRepository: InMemoryQuestionCommentsRepository
 let sut: CommentOnQuestionUseCase
 
 describe('Comment on Question', () => {
   beforeEach(() => {
-    questionsRepository = new InMemoryQuestionsRepository()
+    questionAttachmentsRepository = new InMemoryQuestionAttachmentsRepository()
+    questionsRepository = new InMemoryQuestionsRepository(
+      questionAttachmentsRepository,
+    )
     questionCommentsRepository = new InMemoryQuestionCommentsRepository()
     sut = new CommentOnQuestionUseCase(
       questionsRepository,

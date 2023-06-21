@@ -3,14 +3,19 @@ import { CommentOnAnswerUseCase } from '@/domain/forum/application/use-cases/com
 import { makeAnswer } from 'tests/factories/make-answer'
 import { InMemoryAnswersRepository } from 'tests/repositories/in-memory-answers-repository'
 import { InMemoryAnswerCommentsRepository } from 'tests/repositories/in-memory-answer-comments-repository'
+import { InMemoryAnswerAttachmentsRepository } from 'tests/repositories/in-memory-answer-attachments-repository'
 
 let answersRepository: InMemoryAnswersRepository
 let answerCommentRepository: InMemoryAnswerCommentsRepository
+let answerAttachmentRepository: InMemoryAnswerAttachmentsRepository
 let sut: CommentOnAnswerUseCase
 
 describe('Comment on Answer', () => {
   beforeEach(() => {
-    answersRepository = new InMemoryAnswersRepository()
+    answerAttachmentRepository = new InMemoryAnswerAttachmentsRepository()
+    answersRepository = new InMemoryAnswersRepository(
+      answerAttachmentRepository,
+    )
     answerCommentRepository = new InMemoryAnswerCommentsRepository()
     sut = new CommentOnAnswerUseCase(answersRepository, answerCommentRepository)
   })
